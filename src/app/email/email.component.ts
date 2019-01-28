@@ -9,36 +9,36 @@ export class EmailComponent implements OnInit {
 
   title = 'homework2';
   router;
-  regions =[{name:'台中'},{name:'台北'},{name:'台南'}];
-  value : string;
-  recipients = new Set();
+  regions = [{ name: '台中' }, { name: '台北' }, { name: '台南' }];
+  value: string;
+  recipients = [];
   recipient;
   add;
-  constructor(router : Router) {
-   this.router = router;
+  constructor(router: Router) {
+    this.router = router;
   }
 
-  ngOnInit(){
+  ngOnInit() {
 
   }
 
   addRecipient() {
-    this.recipients.add(this.add);
+    this.recipients.push(this.add);
     this.add = '';
   }
 
-  onChange($event){
-this.value = $event;
-console.log(this.value)
+  onChange($event) {
+    this.value = $event;
+    console.log(this.value);
   }
 
-  deleteRecipient(){
-    this.recipients.clear();
+  deleteRecipient() {
+    this.recipients = [];
   }
 
-  send(){
+  send() {
 
-    this.router.navigate(['send'], {queryParams: {city: this.value}});
+    this.router.navigate(['send'], { queryParams: { city: this.value } });
 
   }
 }
